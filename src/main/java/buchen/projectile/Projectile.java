@@ -1,7 +1,7 @@
 package buchen.projectile;
 
 public class Projectile {
-    private final double GRAVITY = 9.8;
+    private static final double GRAVITY = 9.8;
     private final double velocity;
     private final double radians;
     private double angle;
@@ -28,7 +28,6 @@ public class Projectile {
     /**
      * @return time when projectile is at its highest point
      */
-
     public double getApexTime() {
         return (velocity * Math.sin(radians)) / GRAVITY;
     }
