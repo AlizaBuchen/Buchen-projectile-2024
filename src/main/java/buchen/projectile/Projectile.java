@@ -31,4 +31,12 @@ public class Projectile {
     public double getApexTime() {
         return (velocity * Math.sin(radians)) / GRAVITY;
     }
+
+    /**
+     * @return highest Y value of the Projectile
+     * Documentation: https://byjus.com/question-answer/the-maximum-height-of-projectile-formula-is/
+     */
+    public double getPeakY(){
+        return Math.pow((velocity * Math.sin(angle)),2) / (2 * GRAVITY);
+    }
 }
