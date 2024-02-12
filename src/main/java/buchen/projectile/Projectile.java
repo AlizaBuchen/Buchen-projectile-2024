@@ -37,6 +37,6 @@ public class Projectile {
      * Documentation: https://byjus.com/question-answer/the-maximum-height-of-projectile-formula-is/
      */
     public double getPeakY() {
-        return Math.pow((velocity * Math.sin(angle)), 2) / (2 * GRAVITY);
+        return (velocity * Math.sin(radians)) * (velocity * Math.sin(radians)) / (GRAVITY * 2);
     }
 }
