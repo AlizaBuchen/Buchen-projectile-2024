@@ -39,4 +39,12 @@ public class Projectile {
     public double getPeakY() {
         return (velocity * Math.sin(radians)) * (velocity * Math.sin(radians)) / (GRAVITY * 2);
     }
+
+    /**
+     * @return value of X when it crosses the X axis
+     * Formula taken from ChatGPT
+     */
+    public double getInterceptX() {
+        return Math.cos(radians) * velocity * ((2 * velocity * Math.sin(radians)) / GRAVITY);
+    }
 }
