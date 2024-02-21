@@ -11,8 +11,8 @@ public class ProjectileFrame extends JFrame
     private JTextField velocityField;
     private JTextField secondsField;
     private JSlider angleField;
-    private JLabel xVal;
-    private JLabel yVal;
+    private JLabel valX;
+    private JLabel valY;
     private JLabel peakY;
     private JLabel interceptX;
 
@@ -40,12 +40,12 @@ public class ProjectileFrame extends JFrame
         add(secondsField);
         JLabel labelX = new JLabel("X");
         add(labelX);
-        xVal = new JLabel();
-        add(xVal);
+        valX = new JLabel();
+        add(valX);
         JLabel labelY = new JLabel("Y");
         add(labelY);
-        yVal = new JLabel();
-        add(yVal);
+        valY = new JLabel();
+        add(valY);
         JLabel peakLabelY = new JLabel("Peak Y");
         add(peakLabelY);
         peakY = new JLabel();
@@ -91,16 +91,16 @@ public class ProjectileFrame extends JFrame
 
     private void updateProjectile()
     {
-            Projectile projectile = new Projectile(
-                    Double.parseDouble(velocityField.getText()),
-                    angleField.getValue()
-            );
-            projectile.setSeconds(
-                    Double.parseDouble(secondsField.getText())
-            );
-            xVal.setText(Double.toString(projectile.getX()));
-            yVal.setText(Double.toString(projectile.getY()));
-            peakY.setText(Double.toString(projectile.getPeakY()));
-            interceptX.setText(Double.toString(projectile.getInterceptX()));
+        Projectile projectile = new Projectile(
+                Double.parseDouble(velocityField.getText()),
+                angleField.getValue()
+        );
+        projectile.setSeconds(
+                Double.parseDouble(secondsField.getText())
+        );
+        valX.setText(Double.toString(projectile.getX()));
+        valY.setText(Double.toString(projectile.getY()));
+        peakY.setText(Double.toString(projectile.getPeakY()));
+        interceptX.setText(Double.toString(projectile.getInterceptX()));
     }
 }
