@@ -11,8 +11,8 @@ public class ProjectileFrame extends JFrame
     private JTextField velocityField;
     private JTextField secondsField;
     private JSlider angleField;
-    private JLabel x;
-    private JLabel y;
+    private JLabel xVal;
+    private JLabel yVal;
     private JLabel peakY;
     private JLabel interceptX;
 
@@ -40,12 +40,12 @@ public class ProjectileFrame extends JFrame
         add(secondsField);
         JLabel labelX = new JLabel("X");
         add(labelX);
-        x = new JLabel();
-        add(x);
+        xVal = new JLabel();
+        add(xVal);
         JLabel labelY = new JLabel("Y");
         add(labelY);
-        y = new JLabel();
-        add(y);
+        yVal = new JLabel();
+        add(yVal);
         JLabel peakLabelY = new JLabel("Peak Y");
         add(peakLabelY);
         peakY = new JLabel();
@@ -98,8 +98,8 @@ public class ProjectileFrame extends JFrame
             projectile.setSeconds(
                     Double.parseDouble(secondsField.getText())
             );
-            x.setText(Double.toString(projectile.getX()));
-            y.setText(Double.toString(projectile.getY()));
+            xVal.setText(Double.toString(projectile.getX()));
+            yVal.setText(Double.toString(projectile.getY()));
             peakY.setText(Double.toString(projectile.getPeakY()));
             interceptX.setText(Double.toString(projectile.getInterceptX()));
     }
