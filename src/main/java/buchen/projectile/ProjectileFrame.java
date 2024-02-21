@@ -13,7 +13,6 @@ public class ProjectileFrame extends JFrame
         setSize(400, 600);
         setTitle("Projectile Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        JLabel interceptLabelX = new JLabel("Intercept X");
         setLayout(new GridLayout(8, 2));
         JSlider angleField = new JSlider(JSlider.HORIZONTAL, 0, 90, 45);
         angleField.setMajorTickSpacing(10);
@@ -43,6 +42,7 @@ public class ProjectileFrame extends JFrame
         add(peakLabelY);
         JLabel peakY = new JLabel();
         add(peakY);
+        JLabel interceptLabelX = new JLabel("Intercept X");
         add(interceptLabelX);
         JLabel interceptX = new JLabel();
         add(interceptX);
