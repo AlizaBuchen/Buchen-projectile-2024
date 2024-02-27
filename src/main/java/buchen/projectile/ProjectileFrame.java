@@ -63,16 +63,16 @@ public class ProjectileFrame extends JFrame
         west.add(interceptX);
         west.add(new JLabel());
 
-        velocityField.getDocument().addDocumentListener
-                ((SimpleDocumentListener) e -> updateProjectile());
+        velocityField.getDocument().addDocumentListener(
+                (SimpleDocumentListener) e -> updateProjectile());
 
-        secondsField.getDocument().addDocumentListener
-                ((SimpleDocumentListener) e -> updateProjectile());
+        secondsField.getDocument().addDocumentListener(
+                (SimpleDocumentListener) e -> updateProjectile());
 
         angleField.addChangeListener(e ->
                 updateProjectile());
 
-        main.add (graph, BorderLayout.CENTER);
+        main.add(graph, BorderLayout.CENTER);
     }
 
     private void updateProjectile()
