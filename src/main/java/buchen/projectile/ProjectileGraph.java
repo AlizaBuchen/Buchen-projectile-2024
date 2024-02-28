@@ -21,7 +21,7 @@ public class ProjectileGraph extends JComponent
         {
             int currentX = (int) projectile.getX();
             int currentY = (int) projectile.getY();
-            projectile.setSeconds(t+1);
+            projectile.setSeconds(t + 1);
             g.drawLine(currentX, -currentY, (int) projectile.getX(), -(int) projectile.getY());
         }
         g.setColor(Color.BLUE);
