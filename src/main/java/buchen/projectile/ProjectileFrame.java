@@ -1,27 +1,34 @@
 package buchen.projectile;
 
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ProjectileFrame extends JFrame
 {
-    private JTextField velocityField;
-    private JTextField secondsField;
-    private JSlider angleField;
-    private JLabel valX;
-    private JLabel valY;
-    private JLabel peakY;
-    private JLabel interceptX;
+    private final JTextField velocityField;
+    private final JTextField secondsField;
+    private final JSlider angleField;
+    private final JLabel valX;
+    private final JLabel valY;
+    private final JLabel peakY;
+    private final JLabel interceptX;
+    private final ProjectileGraph graph = new ProjectileGraph();
 
     public ProjectileFrame()
     {
-        setSize(400, 600);
+        setSize(900, 600);
         setTitle("Projectile Calculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(8, 2));
+
+        JPanel main = new JPanel();
+        main.setLayout(new BorderLayout());
+        //tell the JFrame to use this JPanel
+        setContentPane(main);
+
+        JPanel west = new JPanel();
+        main.add(west, BorderLayout.WEST);
+
+        west.setLayout(new GridLayout(8, 2));
         angleField = new JSlider(JSlider.HORIZONTAL, 0, 90, 45);
         angleField.setMajorTickSpacing(10);
         angleField.setMinorTickSpacing(5);
@@ -29,64 +36,43 @@ public class ProjectileFrame extends JFrame
         angleField.setPaintLabels(true);
         velocityField = new JTextField();
         JLabel velocityLabel = new JLabel("Velocity");
-        add(velocityLabel);
-        add(velocityField);
+        west.add(velocityLabel);
+        west.add(velocityField);
         JLabel angleLabel = new JLabel("Angle");
-        add(angleLabel);
-        add(angleField);
+        west.add(angleLabel);
+        west.add(angleField);
         JLabel secondsLabel = new JLabel("Seconds");
-        add(secondsLabel);
+        west.add(secondsLabel);
         secondsField = new JTextField();
-        add(secondsField);
+        west.add(secondsField);
         JLabel labelX = new JLabel("X");
-        add(labelX);
+        west.add(labelX);
         valX = new JLabel();
-        add(valX);
+        west.add(valX);
         JLabel labelY = new JLabel("Y");
-        add(labelY);
+        west.add(labelY);
         valY = new JLabel();
-        add(valY);
+        west.add(valY);
         JLabel peakLabelY = new JLabel("Peak Y");
-        add(peakLabelY);
+        west.add(peakLabelY);
         peakY = new JLabel();
-        add(peakY);
+        west.add(peakY);
         JLabel interceptLabelX = new JLabel("Intercept X");
-        add(interceptLabelX);
+        west.add(interceptLabelX);
         interceptX = new JLabel();
-        add(interceptX);
-        add(new JLabel());
-        JButton calculateButton = new JButton("Calculate");
-        add(calculateButton);
+        west.add(interceptX);
+        west.add(new JLabel());
 
-        calculateButton.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                updateProjectile();
-            }
-        });
+        velocityField.getDocument().addDocumentListener(
+                (SimpleDocumentListener) e -> updateProjectile());
 
-        velocityField.getDocument().addDocumentListener(new SimpleDocumentListener()
-        {
-            @Override
-            public void update(DocumentEvent e)
-            {
-                {
-                    updateProjectile();
-                }
-            }
-        });
-        secondsField.getDocument().addDocumentListener(new SimpleDocumentListener()
-        {
-            @Override
-            public void update(DocumentEvent e) {
-                updateProjectile();
-            }
-        });
+        secondsField.getDocument().addDocumentListener(
+                (SimpleDocumentListener) e -> updateProjectile());
 
         angleField.addChangeListener(e ->
                 updateProjectile());
+
+        main.add(graph, BorderLayout.CENTER);
     }
 
     private void updateProjectile()
@@ -102,5 +88,6 @@ public class ProjectileFrame extends JFrame
         valY.setText(Double.toString(projectile.getY()));
         peakY.setText(Double.toString(projectile.getPeakY()));
         interceptX.setText(Double.toString(projectile.getInterceptX()));
+        graph.setProjectile(projectile);
     }
 }
