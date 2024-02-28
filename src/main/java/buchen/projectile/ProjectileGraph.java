@@ -8,13 +8,14 @@ public class ProjectileGraph extends JComponent
 {
     Projectile projectile = new Projectile(0, 0);
 
-
     @Override
+
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
         g.translate(0, getHeight());
         g.setColor(Color.BLACK);
+        projectile.setSeconds(0);
 
         for (int t = 0; t <= projectile.getApexTime() * 2; t++)
         {
@@ -24,7 +25,7 @@ public class ProjectileGraph extends JComponent
             g.drawLine(currentX, -currentY, (int) projectile.getX(), -(int) projectile.getY());
         }
         g.setColor(Color.BLUE);
-        g.fillOval((int)projectile.getInterceptX() / 2, (int) -projectile.getPeakY(), 15, 15);
+        g.fillOval((int) projectile.getInterceptX() / 2 - 5, (int) -projectile.getPeakY() - 5, 10, 10);
     }
 
 
