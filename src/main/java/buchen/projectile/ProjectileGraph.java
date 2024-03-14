@@ -58,7 +58,7 @@ public class ProjectileGraph extends JComponent
                 + FORMAT.format(projectileCopy.getY()) + ")";
         g.setColor(Color.RED);
 
-        g.drawString(locationSeconds, (int) (projectileCopy.getX()) -30, (int) -projectileCopy.getY() -30);
+        g.drawString(locationSeconds, (int) (projectileCopy.getX()) - 30, (int) -projectileCopy.getY() - 30);
         g.fillOval((int) projectileCopy.getX() - 5, (int) -projectileCopy.getY() - 5, 10, 10);
     }
 
